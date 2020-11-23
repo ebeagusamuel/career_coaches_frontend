@@ -1,0 +1,15 @@
+.appname {
+  font-size: 3vw;
+  padding-top: 2em;
+  padding-bottom: 4em;
+}
+
+.Nav {
+  font-size: 2vw;
+  height: 100vh;
+}
+
+.NavLinks {
+  /* height: 60px; */
+  font-weight: 500;
+}
