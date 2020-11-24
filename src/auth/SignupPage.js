@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { createUser } from './authSlice';
 import './Auth.css';
 
 const SignupPage = () => {
   const dispatch = useDispatch();
+  const signupError = useSelector(state => state.auth.error);
   const [user, setUser] = useState({
     email: '',
     username: '',
@@ -31,6 +33,7 @@ const SignupPage = () => {
   return (
     <div className="authcontainer">
       <h2 className="text-center py-5">Sign Up</h2>
+      {signupError && <div className="auth-error"><em>{signupError}</em></div>}
       <form onSubmit={handleSubmit} className="w-50 text-center mx-auto text-light text-bold">
         <div className="form-group">
           <label htmlFor="email">
@@ -74,9 +77,14 @@ const SignupPage = () => {
             />
           </label>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Sign Up
-        </button>
+        <div>
+          <button type="submit" className="btn btn-primary mr-2">
+            Sign Up
+          </button>
+          <Link to="/login" className="btn btn-primary">
+            Log In
+          </Link>
+        </div>
       </form>
     </div>
   );

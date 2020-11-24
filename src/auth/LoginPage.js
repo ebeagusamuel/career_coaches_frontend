@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { loginUser } from './authSlice';
 import './Auth.css';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const loginError = useSelector(state => state.auth.error);
   const [user, setUser] = useState({
     username: '',
     password: '',
@@ -25,9 +27,11 @@ const LoginPage = () => {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
     <div className="authcontainer">
       <h2 className="text-center py-5">Log In</h2>
+      {loginError && <div className="auth-error"><em>{loginError}</em></div>}
       <form onSubmit={handleSubmit} className="w-50 text-center mx-auto text-light text-bold">
         <div className="form-group">
           <label htmlFor="username">
@@ -55,9 +59,14 @@ const LoginPage = () => {
             />
           </label>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Log In
-        </button>
+        <div>
+          <button type="submit" className="btn btn-primary mr-2">
+            Log In
+          </button>
+          <Link to="/signup" className="btn btn-primary">
+            Sign Up
+          </Link>
+        </div>
       </form>
     </div>
   );

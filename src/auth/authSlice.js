@@ -63,6 +63,10 @@ const authSlice = createSlice({
     [createUser.fulfilled]: (state, action) => {
       const newState = state;
       newState.status = 'fulfilled';
+      if (action.payload.error) {
+        newState.error = action.payload.error;
+        return newState;
+      }
       newState.loggedIn = true;
       newState.user = action.payload;
       window.localStorage.setItem('userObj', JSON.stringify(action.payload));
@@ -82,6 +86,10 @@ const authSlice = createSlice({
     [loginUser.fulfilled]: (state, action) => {
       const newState = state;
       newState.status = 'fulfilled';
+      if (action.payload.error) {
+        newState.error = action.payload.error;
+        return newState;
+      }
       newState.loggedIn = true;
       newState.user = action.payload;
       window.localStorage.setItem('userObj', JSON.stringify(action.payload));

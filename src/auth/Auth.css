@@ -6,3 +6,10 @@
   background-position: center;
   background-size: cover;
 }
+
+.auth-error {
+  width: 25%;
+  font-weight: bold;
+  color: brown;
+  margin: 0 auto 10px auto;
+}
