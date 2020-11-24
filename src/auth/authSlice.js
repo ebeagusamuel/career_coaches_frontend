@@ -33,6 +33,17 @@ export const loginUser = createAsyncThunk('auth/loginUser', async user => {
   return data;
 });
 
+export const autoLogin = createAsyncThunk('auth/autoLogin', async token => {
+  const response = await fetch('http://localhost:3001/auto_login/', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await response.json();
+
+  return data;
+});
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -76,6 +87,24 @@ const authSlice = createSlice({
       return newState;
     },
     [loginUser.rejected]: (state, action) => {
+      const newState = state;
+      newState.status = 'rejected';
+      newState.error = action.error;
+      return newState;
+    },
+    [autoLogin.pending]: state => {
+      const newState = state;
+      newState.status = 'loading';
+      return newState;
+    },
+    [autoLogin.fulfilled]: (state, action) => {
+      const newState = state;
+      newState.status = 'fulfilled';
+      newState.loggedIn = true;
+      newState.user = action.payload;
+      return newState;
+    },
+    [autoLogin.rejected]: (state, action) => {
       const newState = state;
       newState.status = 'rejected';
       newState.error = action.error;
