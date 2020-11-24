@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './App.css';
-import SignupPage from '../auth/SignupPage';
-// import LoginPage from './auth/LoginPage';
+// import SignupPage from '../auth/SignupPage';
+import LoginPage from '../auth/LoginPage';
 
 function App() {
   const loggedIn = useSelector(state => state.auth.loggedIn);
@@ -26,8 +26,8 @@ function App() {
 
   return (
     <div>
-      <SignupPage />
-      {/* <LoginPage /> */}
+      {/* <SignupPage /> */}
+      <LoginPage />
     </div>
   );
 }
