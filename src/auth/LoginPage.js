@@ -2,7 +2,7 @@ import React from 'react';
 import './Auth.css';
 
 const LoginPage = () => (
-  <div className="container">
+  <div className="authcontainer">
     <h2 className="text-center py-5">Log In</h2>
     <form className="w-50 text-center mx-auto text-light text-bold">
       <div className="form-group">

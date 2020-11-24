@@ -8,12 +8,12 @@ const initialState = {
 };
 
 export const createUser = createAsyncThunk('auth/createUser', async newUser => {
-  const response = await fetch('https://localhost:3000/users/', {
+  const response = await fetch('http://localhost:3001/users/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: newUser,
+    body: JSON.stringify(newUser),
   });
   const data = await response.json();
 
@@ -21,7 +21,7 @@ export const createUser = createAsyncThunk('auth/createUser', async newUser => {
 });
 
 export const loginUser = createAsyncThunk('auth/loginUser', async user => {
-  const response = await fetch('https://localhost:3000/login/', {
+  const response = await fetch('localhost:3000/login/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -54,12 +54,13 @@ const authSlice = createSlice({
       newState.status = 'fulfilled';
       newState.loggedIn = true;
       newState.user = action.payload;
+      window.localStorage.setItem('userObj', JSON.stringify(action.payload));
       return newState;
     },
     [createUser.rejected]: (state, action) => {
       const newState = state;
       newState.status = 'rejected';
-      newState.error = action.error;
+      newState.error = action.payload;
       return newState;
     },
     [loginUser.pending]: state => {

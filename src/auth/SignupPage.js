@@ -1,16 +1,35 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createUser } from './authSlice';
 import './Auth.css';
 
 const SignupPage = () => {
-  const
-  const handleChange = () => {
+  const dispatch = useDispatch();
+  const [user, setUser] = useState({
+    email: '',
+    username: '',
+    password: '',
+  });
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(createUser(user));
+    setUser({
+      email: '',
+      username: '',
+      password: '',
+    });
+  };
+
+  const handleChange = e => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
-    <div className="container">
+    <div className="authcontainer">
       <h2 className="text-center py-5">Sign Up</h2>
       <form onSubmit={handleSubmit} className="w-50 text-center mx-auto text-light text-bold">
         <div className="form-group">
@@ -23,6 +42,7 @@ const SignupPage = () => {
               name="email"
               placeholder="Enter email"
               onChange={handleChange}
+              value={user.email}
             />
           </label>
         </div>
@@ -35,6 +55,8 @@ const SignupPage = () => {
               name="username"
               id="username"
               placeholder="Enter a Username"
+              onChange={handleChange}
+              value={user.username}
             />
           </label>
         </div>
@@ -47,6 +69,8 @@ const SignupPage = () => {
               id="Password"
               name="password"
               placeholder="Password"
+              onChange={handleChange}
+              value={user.password}
             />
           </label>
         </div>
