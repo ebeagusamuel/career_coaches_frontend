@@ -13,3 +13,9 @@
   /* height: 60px; */
   font-weight: 500;
 }
+
+.homepage-container {
+  height: 100vh;
+  text-align: center;
+  background-color: crimson;
+}

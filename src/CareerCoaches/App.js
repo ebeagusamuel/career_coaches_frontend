@@ -22,7 +22,7 @@ function App() {
         <div className="container-fluid">
           <div className="row">
             <Nav />
-            <div className="col-10 offset-2 overflow-hidden bg-dark p-0">
+            <div className="col-10 offset-2 overflow-hidden p-0">
               <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/coaches" component={Coaches} />
