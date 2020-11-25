@@ -48,11 +48,12 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    // logout: (state, action) => {
-    //   const newState = state;
-    //   newState.league = action.payload;
-    //   return newState;
-    // },
+    logout: (state, action) => {
+      const newState = state;
+      window.localStorage.removeItem('userObj');
+      newState.loggedIn = action.payload;
+      return newState;
+    },
   },
   extraReducers: {
     [createUser.pending]: state => {
@@ -69,6 +70,7 @@ const authSlice = createSlice({
       }
       newState.loggedIn = true;
       newState.user = action.payload;
+      newState.error = null;
       window.localStorage.setItem('userObj', JSON.stringify(action.payload));
       return newState;
     },
@@ -92,6 +94,7 @@ const authSlice = createSlice({
       }
       newState.loggedIn = true;
       newState.user = action.payload;
+      newState.error = null;
       window.localStorage.setItem('userObj', JSON.stringify(action.payload));
       return newState;
     },
@@ -111,6 +114,7 @@ const authSlice = createSlice({
       newState.status = 'fulfilled';
       newState.loggedIn = true;
       newState.user = action.payload;
+      newState.error = null;
       return newState;
     },
     [autoLogin.rejected]: (state, action) => {
@@ -122,5 +126,5 @@ const authSlice = createSlice({
   },
 });
 
-// export const { setLeague } = highlightsSlice.actions;
+export const { logout } = authSlice.actions;
 export default authSlice.reducer;
