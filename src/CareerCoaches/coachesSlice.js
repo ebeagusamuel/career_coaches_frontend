@@ -19,6 +19,17 @@ export const fetchCoachesObj = createAsyncThunk('careerCoaches/fetchCoachesObj',
   return data;
 });
 
+export const fetchAppointments = createAsyncThunk('careerCoaches/fetchAppointments', async token => {
+  const response = await fetch('http://localhost:3001/appointments/', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await response.json();
+
+  return data;
+});
+
 const coachesSlice = createSlice({
   name: 'careerCoaches',
   initialState,
@@ -44,6 +55,24 @@ const coachesSlice = createSlice({
       return newState;
     },
     [fetchCoachesObj.rejected]: (state, action) => {
+      const newState = state;
+      newState.status = 'rejected';
+      newState.error = action.error;
+      return newState;
+    },
+    [fetchAppointments.pending]: state => {
+      const newState = state;
+      newState.status = 'loading';
+      return newState;
+    },
+    [fetchAppointments.fulfilled]: (state, action) => {
+      const newState = state;
+      newState.status = 'fulfilled';
+      newState.appointments = action.payload;
+      newState.error = null;
+      return newState;
+    },
+    [fetchAppointments.rejected]: (state, action) => {
       const newState = state;
       newState.status = 'rejected';
       newState.error = action.error;

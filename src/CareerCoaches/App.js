@@ -11,6 +11,7 @@ import Nav from './Nav';
 import LoginPage from '../auth/LoginPage';
 import SignupPage from '../auth/SignupPage';
 import Coaches from './Coaches';
+import Appointments from './Appointments';
 import HomePage from './HomePage';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/coaches" component={Coaches} />
+                <Route exact path="/appointments" component={Appointments} />
                 <Redirect to="/" />
               </Switch>
             </div>
