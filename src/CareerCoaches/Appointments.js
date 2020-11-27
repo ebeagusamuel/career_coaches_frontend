@@ -3,13 +3,10 @@ import { useDispatch } from 'react-redux';
 import { fetchAppointments } from './coachesSlice';
 
 const Appointments = () => {
+  const { token } = JSON.parse(window.localStorage.getItem('userObj'));
   const dispatch = useDispatch();
   useEffect(() => {
-    const userObj = JSON.parse(window.localStorage.getItem('userObj'));
-    if (userObj) {
-      const { token } = userObj;
-      dispatch(fetchAppointments(token));
-    }
+    dispatch(fetchAppointments(token));
   }, []);
 
   return (

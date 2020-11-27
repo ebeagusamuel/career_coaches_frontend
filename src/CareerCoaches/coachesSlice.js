@@ -9,6 +9,7 @@ const initialState = {
 };
 
 export const fetchCoachesObj = createAsyncThunk('careerCoaches/fetchCoachesObj', async token => {
+  // console.log(token);
   const response = await fetch('http://localhost:3001/coaches/', {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -31,17 +32,20 @@ export const fetchAppointments = createAsyncThunk('careerCoaches/fetchAppointmen
 });
 
 export const bookAppointment = createAsyncThunk('careerCoaches/bookAppointment', async (token, appointmentDetail) => {
-  const response = await fetch('http://localhost:3001/book_appointment/', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(appointmentDetail),
-  });
-  const data = await response.json();
+  // const obj = { coach_id: 3, date: appointmentDetail };
+  // console.log(token, appointmentDetail);
+  console.log('appointmentDetail', appointmentDetail);
+  // const response = await fetch('http://localhost:3001/book_appointment/', {
+  //   method: 'POST',
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(obj),
+  // });
+  // const data = await response.json();
 
-  return data;
+  // return data;
 });
 
 export const cancelAppointment = createAsyncThunk('careerCoaches/cancelAppointment', async (token, coachId) => {
