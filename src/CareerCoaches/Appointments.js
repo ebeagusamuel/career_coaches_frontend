@@ -3,10 +3,9 @@ import { useDispatch } from 'react-redux';
 import { fetchAppointments } from './coachesSlice';
 
 const Appointments = () => {
-  const { token } = JSON.parse(window.localStorage.getItem('userObj'));
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchAppointments(token));
+    dispatch(fetchAppointments());
   }, []);
 
   return (

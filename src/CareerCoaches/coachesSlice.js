@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+const { token } = JSON.parse(window.localStorage.getItem('userObj'));
 const initialState = {
   coachesObj: [],
   appointments: [],
@@ -8,8 +9,7 @@ const initialState = {
   error: null,
 };
 
-export const fetchCoachesObj = createAsyncThunk('careerCoaches/fetchCoachesObj', async token => {
-  // console.log(token);
+export const fetchCoachesObj = createAsyncThunk('careerCoaches/fetchCoachesObj', async () => {
   const response = await fetch('http://localhost:3001/coaches/', {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -20,7 +20,7 @@ export const fetchCoachesObj = createAsyncThunk('careerCoaches/fetchCoachesObj',
   return data;
 });
 
-export const fetchAppointments = createAsyncThunk('careerCoaches/fetchAppointments', async token => {
+export const fetchAppointments = createAsyncThunk('careerCoaches/fetchAppointments', async () => {
   const response = await fetch('http://localhost:3001/appointments/', {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -31,24 +31,21 @@ export const fetchAppointments = createAsyncThunk('careerCoaches/fetchAppointmen
   return data;
 });
 
-export const bookAppointment = createAsyncThunk('careerCoaches/bookAppointment', async (token, appointmentDetail) => {
-  // const obj = { coach_id: 3, date: appointmentDetail };
-  // console.log(token, appointmentDetail);
-  console.log('appointmentDetail', appointmentDetail);
-  // const response = await fetch('http://localhost:3001/book_appointment/', {
-  //   method: 'POST',
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify(obj),
-  // });
-  // const data = await response.json();
+export const bookAppointment = createAsyncThunk('careerCoaches/bookAppointment', async appointmentDetail => {
+  const response = await fetch('http://localhost:3001/book_appointment/', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(appointmentDetail),
+  });
+  const data = await response.json();
 
-  // return data;
+  return data;
 });
 
-export const cancelAppointment = createAsyncThunk('careerCoaches/cancelAppointment', async (token, coachId) => {
+export const cancelAppointment = createAsyncThunk('careerCoaches/cancelAppointment', async coachId => {
   const response = await fetch('http://localhost:3001/cancel_appointment/', {
     method: 'DELETE',
     headers: {

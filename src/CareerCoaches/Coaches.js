@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchCoachesObj, bookAppointment } from './coachesSlice';
+import { fetchCoachesObj, bookAppointment, cancelAppointment } from './coachesSlice';
 
 const Coaches = () => {
-  const { token } = JSON.parse(window.localStorage.getItem('userObj'));
   const [datetime, setDatetime] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchCoachesObj(token));
+    dispatch(fetchCoachesObj());
   }, []);
 
-  const handleClick = e => {
-    e.preventDefault();
-    dispatch(bookAppointment(token, datetime));
-  };
-
   return (
-    <form onSubmit={handleClick}>
+    <div>
       <input type="datetime-local" onChange={e => setDatetime(e.target.value)} />
-      <button type="submit">Book</button>
-    </form>
+      <button onClick={() => dispatch(bookAppointment({ coach_id: 10, date: datetime }))} type="button">Book</button>
+      <button onClick={() => dispatch(cancelAppointment({ coach_id: 7 }))} type="button">Cancel</button>
+    </div>
   );
 };
 
