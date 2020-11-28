@@ -4,14 +4,33 @@
   padding-bottom: 3em;
 }
 
+.bacc-logo {
+  max-width: 70px;
+  max-height: 70px;
+}
+
 .Nav {
   font-size: 2vw;
   height: 100vh;
 }
 
-.NavLinks {
-  /* height: 60px; */
-  font-weight: 500;
+.NavLinks a {
+  font-weight: 600;
+  color: #524e4e;
+}
+
+.NavLinks a:hover {
+  color: #ffffff;
+  background-color: greenyellow;
+}
+
+.Nav-footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.Nav-footer a {
+  color: #524e4e;
 }
 
 .homepage-container {
