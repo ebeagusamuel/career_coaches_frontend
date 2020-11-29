@@ -62,7 +62,13 @@ export const cancelAppointment = createAsyncThunk('careerCoaches/cancelAppointme
 const coachesSlice = createSlice({
   name: 'careerCoaches',
   initialState,
-  reducers: {},
+  reducers: {
+    clearMessage: (state, action) => {
+      const newState = state;
+      newState.message = action.payload;
+      return newState;
+    },
+  },
   extraReducers: {
     [fetchCoachesObj.pending]: state => {
       const newState = state;
@@ -143,4 +149,5 @@ const coachesSlice = createSlice({
   },
 });
 
+export const { clearMessage } = coachesSlice.actions;
 export default coachesSlice.reducer;

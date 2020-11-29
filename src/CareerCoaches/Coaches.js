@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CommonLoading } from 'react-loadingg';
 import FlashMessage from 'react-flash-message';
 import Coach from './Coach';
-import { fetchCoachesObj, bookAppointment } from './coachesSlice';
+import { fetchCoachesObj, bookAppointment, clearMessage } from './coachesSlice';
 
 const Coaches = () => {
   const status = useSelector(state => state.careerCoaches.status);
@@ -15,6 +15,7 @@ const Coaches = () => {
 
   useEffect(() => {
     dispatch(fetchCoachesObj());
+    dispatch(clearMessage(null));
   }, [dispatch]);
 
   const bookTheAppointment = appointmentDetail => {
