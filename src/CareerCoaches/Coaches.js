@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CommonLoading } from 'react-loadingg';
+import FlashMessage from 'react-flash-message';
 import Coach from './Coach';
 import { fetchCoachesObj, bookAppointment } from './coachesSlice';
 
 const Coaches = () => {
   const status = useSelector(state => state.careerCoaches.status);
+  const message = useSelector(state => state.careerCoaches.message);
   const coaches = useSelector(state => state.careerCoaches.coachesObj.coaches);
   const images = useSelector(state => state.careerCoaches.coachesObj.images);
   let coachesItem;
@@ -53,6 +55,13 @@ const Coaches = () => {
         {`Here are a collection of all our amazing, dedicated and highly skilled career coaches.
         To book an an appointment with any, just pick a date and click on the "Book" button.`}
       </p>
+      {message && (
+      <FlashMessage duration={3000} persistOnHover="true">
+        <p className="bg-primary w-75 mx-auto text-center text-light">
+          <strong>{message}</strong>
+        </p>
+      </FlashMessage>
+      )}
       <div className="py-3 mx-auto d-flex flex-wrap justify-content-center">{coachesItem}</div>
     </>
   );
