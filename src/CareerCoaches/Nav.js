@@ -11,7 +11,7 @@ const Nav = () => {
     <div className="col-2 p-0 Nav fixed-top mr-0 px-0 h-100 text-center border-right">
       <div className="appname">
         <NavLink className="text-decoration-none rounded" to="/">
-          <img className="bacc-logo" src={logo} alt="BACC Logo" />
+          <img className="bacc-logo pr-2" src={logo} alt="BACC Logo" />
         </NavLink>
       </div>
       <div className="NavLinks mt-3">

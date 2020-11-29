@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 /* eslint-disable camelcase */
-const Coach = ({ coachDetails, coachImage }) => {
+const Coach = ({ coachDetails, coachImage, handleClick }) => {
   const {
-    name, location, qualification, charge_per_hour, phone_number,
+    name, location, qualification, charge_per_hour, phone_number, id,
   } = coachDetails;
+  const [datetime, setDatetime] = useState('');
 
   return (
     <div className="card m-3 shadow" style={{ width: '18rem' }}>
@@ -34,12 +35,12 @@ const Coach = ({ coachDetails, coachImage }) => {
         <li className="list-group-item">
           <label htmlFor="date">
             Choose a date
-            <input className="w-75 form-control" type="datetime-local" name="date" />
+            <input onChange={e => setDatetime(e.target.value)} className="w-100 form-control" type="datetime-local" name="date" />
           </label>
         </li>
       </ul>
       <div className="card-body">
-        <button type="button" className="card-link btn btn-primary">Book</button>
+        <button onClick={() => handleClick({ coach_id: id, date: datetime })} type="button" className="card-link btn btn-primary" disabled={!datetime}>Book</button>
       </div>
     </div>
   );
@@ -52,8 +53,10 @@ Coach.propTypes = {
     charge_per_hour: PropTypes.string,
     phone_number: PropTypes.string,
     qualification: PropTypes.string,
+    id: PropTypes.number.isRequired,
   }).isRequired,
   coachImage: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default Coach;
