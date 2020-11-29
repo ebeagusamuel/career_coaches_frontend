@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { CommonLoading } from 'react-loadingg';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,7 +16,12 @@ import Appointments from './Appointments';
 import HomePage from './HomePage';
 
 function App() {
+  const status = useSelector(state => state.auth.status);
   const loggedIn = useSelector(state => state.auth.loggedIn);
+
+  if (status === 'loading') {
+    return <CommonLoading />;
+  }
 
   if (loggedIn) {
     return (

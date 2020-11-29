@@ -1,20 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchCoachesObj, bookAppointment, cancelAppointment } from './coachesSlice';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CommonLoading } from 'react-loadingg';
+import Coach from './Coach';
+import { fetchCoachesObj } from './coachesSlice';
 
 const Coaches = () => {
-  const [datetime, setDatetime] = useState('');
+  const status = useSelector(state => state.careerCoaches.status);
+  const coaches = useSelector(state => state.careerCoaches.coachesObj.coaches);
+  const images = useSelector(state => state.careerCoaches.coachesObj.images);
+  let coachesItem;
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchCoachesObj());
-  }, []);
+  }, [dispatch]);
+
+  if (status === 'loading') {
+    return <CommonLoading />;
+  }
+
+  if (status === 'rejected') {
+    return <h2 className="mt-5 px-5 text-center">There was an error fetching data from the API, please refresh the page again</h2>;
+  }
+
+  if (coaches) {
+    coachesItem = coaches.map((coach, index) => {
+      const coachImage = images[index];
+      const key = coach.id;
+      return <Coach key={key} coachDetails={coach} coachImage={coachImage} />;
+    });
+  }
 
   return (
-    <div>
-      <input type="datetime-local" onChange={e => setDatetime(e.target.value)} />
-      <button onClick={() => dispatch(bookAppointment({ coach_id: 10, date: datetime }))} type="button">Book</button>
-      <button onClick={() => dispatch(cancelAppointment({ coach_id: 7 }))} type="button">Cancel</button>
-    </div>
+    <>
+      <h2 className="text-center text-bold">Book an Appointment</h2>
+      <p className="text-center">
+        Book an appointment with any of our very experinced and passionate
+        carrer coaches today to give your career a boost
+      </p>
+      <div className="py-3 mx-auto d-flex flex-wrap justify-content-center">
+        { coachesItem }
+      </div>
+    </>
   );
 };
 
