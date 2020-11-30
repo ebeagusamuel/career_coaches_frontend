@@ -3,18 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CommonLoading } from 'react-loadingg';
 import FlashMessage from 'react-flash-message';
 import Coach from './Coach';
-import { fetchCoachesObj, bookAppointment, clearMessage } from './coachesSlice';
+import { bookAppointment, clearMessage } from './coachesSlice';
 
 const Coaches = () => {
   const status = useSelector(state => state.careerCoaches.status);
   const message = useSelector(state => state.careerCoaches.message);
-  const coaches = useSelector(state => state.careerCoaches.coachesObj.coaches);
-  const images = useSelector(state => state.careerCoaches.coachesObj.images);
+  const { coaches, images } = useSelector(state => state.careerCoaches.coachesObj);
   let coachesItem;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCoachesObj());
     dispatch(clearMessage(null));
   }, [dispatch]);
 
@@ -35,8 +33,8 @@ const Coaches = () => {
   }
 
   if (coaches) {
-    coachesItem = coaches.map((coach, index) => {
-      const coachImage = images[index];
+    coachesItem = coaches.map(coach => {
+      const coachImage = images.find(image => image.coach_id === coach.id).image;
       const key = coach.id;
       return (
         <Coach

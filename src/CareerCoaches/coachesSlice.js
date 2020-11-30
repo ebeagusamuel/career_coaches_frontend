@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const { token } = JSON.parse(window.localStorage.getItem('userObj'));
 const initialState = {
   coachesObj: [],
   appointments: [],
@@ -10,6 +9,8 @@ const initialState = {
 };
 
 export const fetchCoachesObj = createAsyncThunk('careerCoaches/fetchCoachesObj', async () => {
+  const { token } = JSON.parse(window.localStorage.getItem('userObj'));
+
   const response = await fetch('http://localhost:3001/coaches/', {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -21,6 +22,8 @@ export const fetchCoachesObj = createAsyncThunk('careerCoaches/fetchCoachesObj',
 });
 
 export const fetchAppointments = createAsyncThunk('careerCoaches/fetchAppointments', async () => {
+  const { token } = JSON.parse(window.localStorage.getItem('userObj'));
+
   const response = await fetch('http://localhost:3001/appointments/', {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -32,6 +35,8 @@ export const fetchAppointments = createAsyncThunk('careerCoaches/fetchAppointmen
 });
 
 export const bookAppointment = createAsyncThunk('careerCoaches/bookAppointment', async appointmentDetail => {
+  const { token } = JSON.parse(window.localStorage.getItem('userObj'));
+
   const response = await fetch('http://localhost:3001/book_appointment/', {
     method: 'POST',
     headers: {
@@ -46,6 +51,8 @@ export const bookAppointment = createAsyncThunk('careerCoaches/bookAppointment',
 });
 
 export const cancelAppointment = createAsyncThunk('careerCoaches/cancelAppointment', async coachId => {
+  const { token } = JSON.parse(window.localStorage.getItem('userObj'));
+
   const response = await fetch('http://localhost:3001/cancel_appointment/', {
     method: 'DELETE',
     headers: {

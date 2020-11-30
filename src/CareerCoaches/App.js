@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { CommonLoading } from 'react-loadingg';
 import {
   BrowserRouter as Router,
@@ -14,10 +14,18 @@ import SignupPage from '../auth/SignupPage';
 import Coaches from './Coaches';
 import Appointments from './Appointments';
 import HomePage from './HomePage';
+import { fetchCoachesObj } from './coachesSlice';
 
 function App() {
   const status = useSelector(state => state.auth.status);
   const loggedIn = useSelector(state => state.auth.loggedIn);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (loggedIn) {
+      dispatch(fetchCoachesObj());
+    }
+  }, [loggedIn]);
 
   if (status === 'loading') {
     return <CommonLoading />;
