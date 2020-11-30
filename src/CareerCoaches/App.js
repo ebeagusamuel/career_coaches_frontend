@@ -56,7 +56,6 @@ function App() {
       <Switch>
         <Route exact path="/signup" component={SignupPage} />
         <Route path={['/', '/login']} component={LoginPage} />
-        {/* <Redirect to="/" /> */}
       </Switch>
     </Router>
   );
