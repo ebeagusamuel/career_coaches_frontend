@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { format } from 'date-fns';
 
 /* eslint-disable camelcase */
 const Appointment = ({
@@ -31,7 +32,7 @@ const Appointment = ({
         </li>
         <li className="list-group-item">
           <small>Date: </small>
-          {date}
+          {format(new Date(date), 'yyyy/MM/dd kk:mm:ss')}
         </li>
       </ul>
       <div className="card-body">

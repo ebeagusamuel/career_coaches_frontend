@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CommonLoading } from 'react-loadingg';
 import FlashMessage from 'react-flash-message';
-import { fetchAppointments, cancelAppointment } from './coachesSlice';
+import { fetchAppointments, cancelAppointment, clearMessage } from './coachesSlice';
 import Appointment from './Appointment';
 
 /* eslint-disable camelcase */
@@ -14,6 +14,7 @@ const Appointments = () => {
   let appointmentItems;
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(clearMessage(null));
     dispatch(fetchAppointments());
   }, []);
 
