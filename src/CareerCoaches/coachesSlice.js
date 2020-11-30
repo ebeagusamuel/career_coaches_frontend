@@ -143,6 +143,9 @@ const coachesSlice = createSlice({
     [cancelAppointment.fulfilled]: (state, action) => {
       const newState = state;
       newState.status = 'fulfilled';
+      newState.appointments = newState.appointments.filter(
+        appointment => appointment.coach_id !== action.payload.coach_id,
+      );
       newState.message = action.payload.message;
       newState.error = null;
       return newState;

@@ -53,7 +53,7 @@ const Appointments = () => {
   return (
     <div>
       <h4 className="w-75 mx-auto my-2 text-center">
-        Here is a compilation of all your apppointments
+        {appointments.length > 0 ? 'Here is a compilation of all your apppointments' : "You don't have any appointment"}
       </h4>
       {message && (
         <FlashMessage duration={3000} persistOnHover="true">
