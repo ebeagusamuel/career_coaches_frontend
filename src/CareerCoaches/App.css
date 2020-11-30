@@ -24,13 +24,13 @@
   color: #524e4e;
 }
 
+.Nav-footer a {
+  color: #524e4e;
+}
+
 .NavLinks a:hover {
   color: #fff;
   background-color: blue;
-}
-
-.Nav-footer a {
-  color: #524e4e;
 }
 
 .homepage-container {
