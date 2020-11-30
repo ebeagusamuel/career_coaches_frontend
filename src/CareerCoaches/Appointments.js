@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CommonLoading } from 'react-loadingg';
 import FlashMessage from 'react-flash-message';
 import { fetchAppointments, cancelAppointment, clearMessage } from './coachesSlice';
 import Appointment from './Appointment';
@@ -23,7 +22,7 @@ const Appointments = () => {
   };
 
   if (status === 'loading') {
-    return <CommonLoading />;
+    return <div>Loading...</div>;
   }
 
   if (status === 'rejected') {
