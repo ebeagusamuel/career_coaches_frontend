@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const createUser = createAsyncThunk('auth/createUser', async newUser => {
-  const response = await fetch('http://localhost:3001/users/', {
+  const response = await fetch('https://career-coaches-api.herokuapp.com/users/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ export const createUser = createAsyncThunk('auth/createUser', async newUser => {
 });
 
 export const loginUser = createAsyncThunk('auth/loginUser', async user => {
-  const response = await fetch('http://localhost:3001/login/', {
+  const response = await fetch('https://career-coaches-api.herokuapp.com/login/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export const loginUser = createAsyncThunk('auth/loginUser', async user => {
 });
 
 export const autoLogin = createAsyncThunk('auth/autoLogin', async token => {
-  const response = await fetch('http://localhost:3001/auto_login/', {
+  const response = await fetch('https://career-coaches-api.herokuapp.com/auto_login/', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
