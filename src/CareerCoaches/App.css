@@ -71,10 +71,10 @@
 
 @media screen and (max-width: 568px) {
   .homepage-container {
-    height: 800px;
+    height: 950px;
   }
 
   .homepage-bg video {
-    object-position: 50% 20%;
+    object-position: 10% 20%;
   }
 }
