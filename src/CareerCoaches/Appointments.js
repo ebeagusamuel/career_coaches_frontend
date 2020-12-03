@@ -8,7 +8,7 @@ import Appointment from './Appointment';
 const Appointments = () => {
   const status = useSelector(state => state.careerCoaches.status);
   const appointments = useSelector(state => state.careerCoaches.appointments);
-  const { coaches, images } = useSelector(state => state.careerCoaches.coachesObj);
+  const coaches = useSelector(state => state.careerCoaches.coachesObj);
   const message = useSelector(state => state.careerCoaches.message);
   let appointmentItems;
   const dispatch = useDispatch();
@@ -37,12 +37,10 @@ const Appointments = () => {
     appointmentItems = appointments.map(appointment => {
       const { id, coach_id, date_and_time } = appointment;
       const coachDetails = coaches.find(coach => coach.id === coach_id);
-      const coachImage = images.find(image => image.coach_id === coach_id).image;
       return (
         <Appointment
           key={id}
           coachDetails={coachDetails}
-          coachImage={coachImage}
           date={date_and_time}
           handleClick={cancelTheAppointment}
         />

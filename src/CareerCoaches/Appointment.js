@@ -4,17 +4,17 @@ import { format } from 'date-fns';
 
 /* eslint-disable camelcase */
 const Appointment = ({
-  coachDetails, coachImage, date, handleClick,
+  coachDetails, date, handleClick,
 }) => {
   const {
-    id, name, location, phone_number,
+    id, name, location, phone_number, image_path,
   } = coachDetails;
 
   return (
     <div className="card m-3 shadow" style={{ width: '18rem' }}>
       <img
         className="card-img-top img-fluid"
-        src={`http://localhost:3001/${coachImage}`}
+        src={`http://localhost:3001/${image_path}`}
         alt={name}
       />
       <ul className="list-group list-group-flush">
@@ -52,11 +52,11 @@ Appointment.propTypes = {
   coachDetails: PropTypes.shape({
     name: PropTypes.string,
     location: PropTypes.string,
+    image_path: PropTypes.string.isRequired,
     phone_number: PropTypes.string,
     id: PropTypes.number.isRequired,
   }).isRequired,
   date: PropTypes.string.isRequired,
-  coachImage: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
 };
 
