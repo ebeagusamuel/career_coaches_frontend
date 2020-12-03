@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import App from '../CareerCoaches/App';
 import store from '../store';
 
-
 test('renders without crashing', () => {
   const { baseElement } = render(
     <Provider store={store}>
