@@ -10,7 +10,7 @@ const Coach = ({ coachDetails, handleClick }) => {
 
   return (
     <div className="card m-3 shadow" style={{ width: '18rem' }}>
-      <img className="card-img-top img-fluid" src={`http://localhost:3001/${image_path}`} alt={name} />
+      <img className="card-img-top img-fluid" src={`https://career-coaches-api.herokuapp.com/${image_path}`} alt={name} />
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
           <small>Name: </small>
