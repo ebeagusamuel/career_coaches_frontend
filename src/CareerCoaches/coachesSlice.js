@@ -11,7 +11,7 @@ const initialState = {
 export const fetchCoachesObj = createAsyncThunk('careerCoaches/fetchCoachesObj', async () => {
   const { token } = JSON.parse(window.localStorage.getItem('userObj'));
 
-  const response = await fetch('https://career-coaches-api.herokuapp.com/coaches/', {
+  const response = await fetch('http://localhost:3001/coaches/', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -24,7 +24,7 @@ export const fetchCoachesObj = createAsyncThunk('careerCoaches/fetchCoachesObj',
 export const fetchAppointments = createAsyncThunk('careerCoaches/fetchAppointments', async () => {
   const { token } = JSON.parse(window.localStorage.getItem('userObj'));
 
-  const response = await fetch('https://career-coaches-api.herokuapp.com/appointments/', {
+  const response = await fetch('http://localhost:3001/appointments/', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -37,7 +37,7 @@ export const fetchAppointments = createAsyncThunk('careerCoaches/fetchAppointmen
 export const bookAppointment = createAsyncThunk('careerCoaches/bookAppointment', async appointmentDetail => {
   const { token } = JSON.parse(window.localStorage.getItem('userObj'));
 
-  const response = await fetch('https://career-coaches-api.herokuapp.com/book_appointment/', {
+  const response = await fetch('http://localhost:3001/appointments/', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -50,10 +50,12 @@ export const bookAppointment = createAsyncThunk('careerCoaches/bookAppointment',
   return data;
 });
 
+/* eslint-disable camelcase */
 export const cancelAppointment = createAsyncThunk('careerCoaches/cancelAppointment', async coachId => {
   const { token } = JSON.parse(window.localStorage.getItem('userObj'));
+  const { coach_id } = coachId;
 
-  const response = await fetch('https://career-coaches-api.herokuapp.com/cancel_appointment/', {
+  const response = await fetch(`http://localhost:3001/appointments/${coach_id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${token}`,

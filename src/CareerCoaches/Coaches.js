@@ -7,7 +7,7 @@ import { bookAppointment, clearMessage } from './coachesSlice';
 const Coaches = () => {
   const status = useSelector(state => state.careerCoaches.status);
   const message = useSelector(state => state.careerCoaches.message);
-  const { coaches, images } = useSelector(state => state.careerCoaches.coachesObj);
+  const coaches = useSelector(state => state.careerCoaches.coachesObj);
   let coachesItem;
   const dispatch = useDispatch();
 
@@ -33,13 +33,11 @@ const Coaches = () => {
 
   if (coaches) {
     coachesItem = coaches.map(coach => {
-      const coachImage = images.find(image => image.coach_id === coach.id).image;
       const key = coach.id;
       return (
         <Coach
           key={key}
           coachDetails={coach}
-          coachImage={coachImage}
           handleClick={bookTheAppointment}
         />
       );

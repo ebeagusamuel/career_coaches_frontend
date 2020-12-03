@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 /* eslint-disable camelcase */
-const Coach = ({ coachDetails, coachImage, handleClick }) => {
+const Coach = ({ coachDetails, handleClick }) => {
   const {
-    name, location, qualification, charge_per_hour, phone_number, id,
+    name, location, qualification, charge_per_hour, phone_number, id, image_path,
   } = coachDetails;
   const [datetime, setDatetime] = useState('');
 
   return (
     <div className="card m-3 shadow" style={{ width: '18rem' }}>
-      <img className="card-img-top img-fluid" src={`https://career-coaches-api.herokuapp.com/${coachImage}`} alt={name} />
+      <img className="card-img-top img-fluid" src={`https://career-coaches-api.herokuapp.com/${image_path}`} alt={name} />
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
           <small>Name: </small>
@@ -53,9 +53,9 @@ Coach.propTypes = {
     charge_per_hour: PropTypes.string,
     phone_number: PropTypes.string,
     qualification: PropTypes.string,
+    image_path: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   }).isRequired,
-  coachImage: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
 };
 

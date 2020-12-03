@@ -14,7 +14,7 @@ const Appointment = ({
     <div className="card m-3 shadow" style={{ width: '18rem' }}>
       <img
         className="card-img-top img-fluid"
-        src={`https://career-coaches-api.herokuapp.com/${coachImage}`}
+        src={`http://localhost:3001/${coachImage}`}
         alt={name}
       />
       <ul className="list-group list-group-flush">
