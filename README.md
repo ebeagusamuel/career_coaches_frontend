@@ -21,9 +21,10 @@
 
 ## Screenshot of the app.
 
-![careerCoaches1](https://user-images.githubusercontent.com/57847212/100957968-b9a63a00-351b-11eb-9963-5e7df3e271c5.png)
+![Screenshot from 2020-12-03 18-40-42](https://user-images.githubusercontent.com/57847212/101067317-b18be000-3597-11eb-980c-154ffea3c590.png)
 
-![careerCoaches2](https://user-images.githubusercontent.com/57847212/100958013-cf1b6400-351b-11eb-848d-d41d57c10860.png)
+![Screenshot from 2020-12-03 18-41-40](https://user-images.githubusercontent.com/57847212/101067435-d718e980-3597-11eb-810c-15e8e852441a.png)
+
 
 
 ## Rails Backend [github link](https://github.com/ebeagusamuel/career_coaches_backend_api)
