@@ -20,17 +20,21 @@ export const createUser = createAsyncThunk('auth/createUser', async newUser => {
   return data;
 });
 
-export const loginUser = createAsyncThunk('auth/loginUser', async user => {
-  const response = await fetch('https://career-coaches-api.herokuapp.com/login/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  });
-  const data = await response.json();
+export const loginUser = createAsyncThunk('auth/loginUser', async (user, { rejectWithValue }) => {
+  try {
+    const response = await fetch('https://career-coaches-api.herokuapp.com/login/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+    const data = await response.json();
 
-  return data;
+    return data;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
 });
 
 export const autoLogin = createAsyncThunk('auth/autoLogin', async token => {

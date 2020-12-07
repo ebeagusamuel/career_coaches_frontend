@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import store from './store';
-import { autoLogin } from './auth/authSlice';
+import { autoLogin } from './feature/auth/authSlice';
 import './index.css';
-import App from './CareerCoaches/App';
+import App from './App';
 
 const userObj = JSON.parse(window.localStorage.getItem('userObj'));
 if (userObj) {

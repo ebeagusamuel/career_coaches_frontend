@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Coach from '../../CareerCoaches/Coach';
+import Coach from '../../feature/CareerCoaches/Coach';
 
 const dummyFunc = () => 'Called!';
 

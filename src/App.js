@@ -8,13 +8,13 @@ import {
   Redirect,
 } from 'react-router-dom';
 import './App.css';
-import Nav from './Nav';
-import LoginPage from '../auth/LoginPage';
-import SignupPage from '../auth/SignupPage';
-import Coaches from './Coaches';
-import Appointments from './Appointments';
-import HomePage from './HomePage';
-import { fetchCoachesObj } from './coachesSlice';
+import Nav from './feature/CareerCoaches/Nav';
+import LoginPage from './feature/auth/LoginPage';
+import SignupPage from './feature/auth/SignupPage';
+import Coaches from './feature/CareerCoaches/Coaches';
+import Appointments from './feature/CareerCoaches/Appointments';
+import HomePage from './feature/CareerCoaches/HomePage';
+import { fetchCoachesObj } from './feature/CareerCoaches/coachesSlice';
 
 function App() {
   const status = useSelector(state => state.auth.status);

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logout } from '../auth/authSlice';
-import logo from '../assets/BACClogo.png';
+import logo from '../../assets/BACClogo.png';
 
 const Nav = () => {
   const dispatch = useDispatch();

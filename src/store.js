@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './auth/authSlice';
-import coachesReducer from './CareerCoaches/coachesSlice';
+import authReducer from './feature/auth/authSlice';
+import coachesReducer from './feature/CareerCoaches/coachesSlice';
 
 export default configureStore({
   reducer: {

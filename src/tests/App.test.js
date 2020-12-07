@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import App from '../CareerCoaches/App';
+import App from '../App';
 import store from '../store';
 
 test('renders without crashing', () => {

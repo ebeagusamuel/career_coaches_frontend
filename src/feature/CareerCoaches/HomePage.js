@@ -1,5 +1,5 @@
 import React from 'react';
-import bgVideo from '../assets/bgVideo.mp4';
+import bgVideo from '../../assets/bgVideo.mp4';
 
 const HomePage = () => {
   const { user } = JSON.parse(window.localStorage.getItem('userObj'));
