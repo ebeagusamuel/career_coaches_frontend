@@ -6,7 +6,7 @@
 > <br>
 > The APP is created with the latest industry standards using React.js and Redux Toolkit
 > <br>
-> API Backend used for data manipulation: [career-coaches-api](https://career-coaches-api.herokuapp.com/) <br>
+> API Backend used for data manipulation: [career-coaches-api](https://career-coaches-api.onrender.com/) <br>
 > The app is fully mobile responsive and tested using Jest and the React Testing Library.
 > <br>
 
